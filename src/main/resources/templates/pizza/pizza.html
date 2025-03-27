@@ -8,27 +8,37 @@
     <th:block th:replace="~{fragments/fragments :: import-css}"></th:block>
   </head>
   <body>
-    <h1>Pizza</h1>
+    <div class="container">
+      <h1>Pizza</h1>
 
-    <!-- Table -->
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Descrizione</th>
-          <th scope="col">Immagine</th>
-          <th scope="col">Prezzo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-      </tbody>
-    </table>
+      <!-- Table -->
+      <table
+        class="table table-striped table-hover"
+        th:if="${pizze.size() > 0}"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Immagine</th>
+            <th scope="col">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="pizza : ${pizze}" th:object="${pizza}">
+            <th scope="row">[[*{id}]]</th>
+            <td>[[*{nome}]]</td>
+            <td>[[*{descrizione}]]</td>
+            <td>[[*{urlImmagine}]]</td>
+            <td>[[*{prezzo}]]</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div th:unless="${pizze.size() > 0}">
+        <h2>Non ci sono pizze disponibili</h2>
+      </div>
+    </div>
   </body>
 </html>

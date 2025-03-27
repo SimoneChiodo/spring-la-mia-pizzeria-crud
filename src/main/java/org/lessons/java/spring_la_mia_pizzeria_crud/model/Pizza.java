@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "pizzas")
+@Table(name = "pizze")
 public class Pizza {
   
   @Id
@@ -30,7 +30,7 @@ public class Pizza {
   @Min(value = 0, message = "Il prezzo deve essere maggiore di 0")
   public BigDecimal prezzo;
 
-  
+
   // Getters & Setters
 
   public Integer getId() {
