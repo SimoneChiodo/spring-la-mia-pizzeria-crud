@@ -4,7 +4,7 @@ Dobbiamo realizzare un’applicazione web che ci aiuti a gestire la nostra pizze
 
 Abbiamo bisogno di creare la prima pagina (index) dove mostriamo tutte le pizze che prepariamo.
 
-Una pizza avrà le seguenti informazioni :
+Una pizza avrà le seguenti informazioni:
 
 - un id
 - un nome
