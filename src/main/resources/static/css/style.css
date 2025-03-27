@@ -5,11 +5,12 @@ ul {
   margin: 0;
 }
 
-/* show.html */
-.pizza-detail-container {
+/* UTILITIES */
+.light-shadow {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* show.html */
 .pizza-detail-container li {
   margin-bottom: 10px;
 }
