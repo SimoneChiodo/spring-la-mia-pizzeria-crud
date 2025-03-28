@@ -13,7 +13,6 @@ import org.lessons.java.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 import org.lessons.java.spring_la_mia_pizzeria_crud.model.Pizza;
 import jakarta.validation.Valid;
 
-import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -104,6 +103,16 @@ public class PizzaController {
     
     // Se non ci sono errori, aggiorno la pizza nel DB
     repository.save(formPizza); // INSERT INTO 'pizze' (nome, descrizione, urlImmagine, prezzo) VALUES (?, ?, ?, ?)
+
+    return "redirect:/pizza"; //Ritorno alla index
+  }
+
+  // DELETE
+  @PostMapping("/pizza/delete/{id}")
+  public String delete(@PathVariable Integer id) {
+    Pizza pizza = repository.findById(id).get(); // SELECT * FROM 'pizze' WHERE id = ?
+
+    repository.delete(pizza); // DELETE FROM 'pizze' WHERE id = ?
 
     return "redirect:/pizza"; //Ritorno alla index
   }
