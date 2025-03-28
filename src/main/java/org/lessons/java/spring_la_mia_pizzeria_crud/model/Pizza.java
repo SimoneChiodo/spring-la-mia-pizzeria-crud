@@ -30,6 +30,17 @@ public class Pizza {
   @Min(value = 0, message = "Il prezzo deve essere maggiore di 0")
   public BigDecimal prezzo;
 
+  // Costructors
+  public Pizza() {
+  }
+
+  public Pizza(String nome, String descrizione, String urlImmagine, BigDecimal prezzo) {
+    this.nome = nome;
+    this.descrizione = descrizione;
+    this.urlImmagine = urlImmagine;
+    this.prezzo = prezzo;
+  }
+
 
   // Getters & Setters
 
