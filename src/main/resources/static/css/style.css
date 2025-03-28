@@ -6,8 +6,19 @@
 }
 
 /* UTILITIES */
+.underline {
+  text-decoration: underline;
+}
+
 .light-shadow {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* index.html */
+#home-jumbo {
+  aspect-ratio: 16/9;
+  width: 100%;
+  border-radius: 40px;
 }
 
 /* show.html */
