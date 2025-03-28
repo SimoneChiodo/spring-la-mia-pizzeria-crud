@@ -85,4 +85,27 @@ public class PizzaController {
     return "redirect:/pizza"; //Ritorno alla index
   }
 
+  // EDIT
+  @GetMapping("/pizza/edit/{id}")
+  public String edit(@PathVariable Integer id, Model model) {
+    Pizza pizza = repository.findById(id).get(); // SELECT * FROM 'pizze' WHERE id = ?
+
+    model.addAttribute("pizza", pizza);
+
+    return "pizza/edit";
+  }
+  
+  // UPDATE
+  @PostMapping("/pizza/edit/{id}")
+  public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+    if (bindingResult.hasErrors()) {
+      return "pizza/edit"; // Se ci sono errori, torno alla pagina di modifica
+    }
+    
+    // Se non ci sono errori, aggiorno la pizza nel DB
+    repository.save(formPizza); // INSERT INTO 'pizze' (nome, descrizione, urlImmagine, prezzo) VALUES (?, ?, ?, ?)
+
+    return "redirect:/pizza"; //Ritorno alla index
+  }
+
 }
