@@ -9,47 +9,57 @@
     <th:block th:replace="~{fragments/fragments :: import-css}"></th:block>
   </head>
   <body>
-    <div class="container">
-      <h1>Pizza Details</h1>
+    <!-- HEADER -->
+    <header>
+      <th:block
+        th:replace="~{fragments/fragments :: navbar('none')}"
+      ></th:block>
+    </header>
 
-      <!-- Table -->
-      <div
-        class="row pizza-detail-container light-shadow border rounded-5 p-3"
-        th:if="${pizza != null}"
-        th:object="${pizza}"
-      >
-        <div class="col col-7 left-side">
-          <ul class="reset-ul">
-            <li>
-              <h2 scope="col">ID:</h2>
-              <span class="fs-4">[[*{id}]]</span>
-            </li>
-            <li>
-              <h2 scope="col">Nome:</h2>
-              <span class="fs-4">[[*{nome}]]</span>
-            </li>
-            <li>
-              <h2 scope="col">Descrizione:</h2>
-              <span class="fs-4">[[*{descrizione}]]</span>
-            </li>
-            <li>
-              <h2 scope="col">Prezzo:</h2>
-              <span class="fs-4">[[*{prezzo}]]</span>
-            </li>
-          </ul>
+    <!-- MAIN -->
+    <main>
+      <div class="container">
+        <h1>Pizza Details</h1>
+
+        <!-- Table -->
+        <div
+          class="row pizza-detail-container light-shadow border rounded-5 p-3"
+          th:if="${pizza != null}"
+          th:object="${pizza}"
+        >
+          <div class="col col-7 left-side">
+            <ul class="reset-ul">
+              <li>
+                <h2 scope="col">ID:</h2>
+                <span class="fs-4">[[*{id}]]</span>
+              </li>
+              <li>
+                <h2 scope="col">Nome:</h2>
+                <span class="fs-4">[[*{nome}]]</span>
+              </li>
+              <li>
+                <h2 scope="col">Descrizione:</h2>
+                <span class="fs-4">[[*{descrizione}]]</span>
+              </li>
+              <li>
+                <h2 scope="col">Prezzo:</h2>
+                <span class="fs-4">[[*{prezzo}]]</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col pizza-image-container col-5 right-side">
+            <img
+              th:src="*{urlImmagine}"
+              alt="pizza image"
+              class="rounded-3 pizza-image"
+            />
+          </div>
         </div>
-        <div class="col pizza-image-container col-5 right-side">
-          <img
-            th:src="*{urlImmagine}"
-            alt="pizza image"
-            class="rounded-3 pizza-image"
-          />
+
+        <div th:unless="${pizza != null}">
+          <h2>Non ci sono pizze disponibili</h2>
         </div>
       </div>
-
-      <div th:unless="${pizza != null}">
-        <h2>Non ci sono pizze disponibili</h2>
-      </div>
-    </div>
+    </main>
   </body>
 </html>
